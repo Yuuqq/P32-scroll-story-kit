@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>P32 Scrollytelling 脚手架</title>
+    <link rel="stylesheet" href="../shared/design-tokens.css" />
+<link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="P32 Scrollytelling 脚手架。P32 Scrollytelling 脚手架" />
+  <meta property="og:title" content="P32 Scrollytelling 脚手架" />
+  <meta property="og:description" content="Scrollytelling 脚手架 — 前端纯静态新闻工具" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuuqq.github.io/P32-scroll-story-kit/" />
+</head>
+<body>
+  <main class="layout">
+    <h1 class="sr-only">P32 Scrollytelling 脚手架</h1>
+    <section class="graphic" id="graphic">
+      <div id="bgLabel" class="bg-label">封面</div>
+    </section>
+    <section class="story">
+      <article class="step" data-scene="封面"><h2>封面</h2><p>滚动开始你的叙事。</p></article>
+      <article class="step" data-scene="事件发生"><h2>事件发生</h2><p>描述“何时何地发生了什么”。</p></article>
+      <article class="step" data-scene="数据证据"><h2>数据证据</h2><p>加入图表或关键数字。</p></article>
+      <article class="step" data-scene="现场声音"><h2>现场声音</h2><p>放入采访对象原话与背景信息。</p></article>
+      <article class="step" data-scene="后续追踪"><h2>后续追踪</h2><p>给出尚待核查的问题。</p></article>
+    </section>
+  </main>
+    <script src="./pm-metrics.js" defer></script>
+<script src="./app.js" defer></script>
+
+  <!-- Privacy Notice -->
+  <div style="text-align:center;padding:12px 16px;font-size:12px;color:#888;border-top:1px solid #eee;margin-top:24px;">
+    🔒 隐私提示：本工具所有数据处理均在您的浏览器本地完成，不会上传任何数据至服务器。
+  </div>
+
+  <!-- Cross-Project Navigation -->
+  <nav style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:13px;border-top:1px solid #e5e5e5;margin-top:16px;color:#666;">
+    <a href="https://yuuqq.github.io/_codex/" style="text-decoration:none;">📋 工具箱导航</a>
+    <span style="opacity:.4">P32</span>
+  </nav>
+</body>
+</html>
