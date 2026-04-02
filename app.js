@@ -13,6 +13,13 @@ const obs = new IntersectionObserver(entries => {
 
 steps.forEach(s => obs.observe(s));
 
+const progressBar = document.getElementById("progressBar");
+window.addEventListener("scroll", () => {
+  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
+  if (progressBar) progressBar.style.width = `${pct}%`;
+});
+
 // === PM Metrics Integration ===
 (function() {
   try {

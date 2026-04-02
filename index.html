@@ -12,19 +12,31 @@
   <meta property="og:description" content="Scrollytelling 脚手架 — 前端纯静态新闻工具" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yuuqq.github.io/P32-scroll-story-kit/" />
+  <link rel="manifest" href="./manifest.json" />
+<style media="print">
+.gnav,.pedagogy-panel,.explore-section,[class*="dark-toggle"],button[aria-label]{display:none!important}
+body{background:#fff!important;color:#000!important;font-size:11pt}
+.app,main,.container{box-shadow:none!important;border:none!important;padding:0!important}
+a{color:#000!important;text-decoration:underline}
+a[href]::after{content:" (" attr(href) ")";font-size:9pt;color:#666}
+@page{margin:2cm}
+</style>
 </head>
 <body>
-  <main class="layout">
+  <main aria-label="主内容区域" class="layout">
     <h1 class="sr-only">P32 Scrollytelling 脚手架</h1>
+    <div class="progress-bar-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
     <section class="graphic" id="graphic">
-      <div id="bgLabel" class="bg-label">封面</div>
+      <div id="bgLabel" class="bg-label">引言：升温危机</div>
     </section>
     <section class="story">
-      <article class="step" data-scene="封面"><h2>封面</h2><p>滚动开始你的叙事。</p></article>
-      <article class="step" data-scene="事件发生"><h2>事件发生</h2><p>描述“何时何地发生了什么”。</p></article>
-      <article class="step" data-scene="数据证据"><h2>数据证据</h2><p>加入图表或关键数字。</p></article>
-      <article class="step" data-scene="现场声音"><h2>现场声音</h2><p>放入采访对象原话与背景信息。</p></article>
-      <article class="step" data-scene="后续追踪"><h2>后续追踪</h2><p>给出尚待核查的问题。</p></article>
+      <article class="step" data-scene="引言：升温危机"><h2>引言：升温的警钟</h2><p>过去一百年，全球平均气温上升了约 1.2℃。看似微不足道的数字改变，正在重塑整个地球的生态系统。</p><p>向上滚动页面，看看这些变化如何影响我们的世界。</p></article>
+      <article class="step" data-scene="冰川消融：消失的帷幕"><h2>冰川消融</h2><p>在北极，海冰面积正以每十年 13% 的速度急剧锐减。这是地球空调失去制冷功能的直观体现。失去冰层反射阳光，海水将吸收更多热量，进一步加速变暖。</p></article>
+      <article class="step" data-scene="极端天气：新常态代价"><h2>极端天气频发</h2><p>从肆虐的热浪到破坏性的洪水，极端天气不再是百年一遇的偶然。数据表明，伴随着气温上升，致命高温天气的发生频率已经翻了三倍。</p></article>
+      <article class="step" data-scene="海平面上升：淹没的家园"><h2>海平面的无声逼近</h2><p>随着格陵兰岛和南极冰盖的加速融化，全球海平面预计到本世纪末将上升高至一米。对于沿海城市和岛国而言，这是一场缓慢却无法阻挡的生存危机。</p></article>
+      <article class="step" data-scene="关键转折点：行动契机"><h2>转折点：行动的契机</h2><p>减碳已成为全球共识。各国正在向可再生能源转型，推广电动交通工具。但时间紧迫，我们的每一个决定都在书写地球的未来。</p></article>
     </section>
   </main>
     <script src="./pm-metrics.js" defer></script>
@@ -36,9 +48,20 @@
   </div>
 
   <!-- Cross-Project Navigation -->
-  <nav style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:13px;border-top:1px solid #e5e5e5;margin-top:16px;color:#666;">
-    <a href="https://yuuqq.github.io/_codex/" style="text-decoration:none;">📋 工具箱导航</a>
+  <nav aria-label="工具箱导航" style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:13px;border-top:1px solid #e5e5e5;margin-top:16px;color:#666;">
+    <a href="https://yuuqq.github.io/journalism-toolbox/" style="text-decoration:none;">📋 工具箱导航</a>
     <span style="opacity:.4">P32</span>
   </nav>
+  <script src="../shared/dark-toggle.js" defer></script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}</script>
+  <script src="../shared/cmd-palette.js" defer></script>
+  <script src="../shared/toast.js" defer></script>
+  <script src="../shared/onboarding.js" defer></script>
+
+  <script src="../shared/pedagogy-data-p1.js" defer></script>
+  <script src="../shared/pedagogy-data-p2.js" defer></script>
+  <script src="../shared/global-nav.js" defer></script>
+  <script src="../shared/kbd-hints.js" defer></script>
 </body>
 </html>
+
