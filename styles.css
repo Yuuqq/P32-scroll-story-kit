@@ -6,7 +6,7 @@ body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#f8f9f
   background:radial-gradient(circle at 20% 20%,#25406d 0,#101a30 50%,#070b15 100%);
 }
 .bg-label{font-size:48px;font-weight:700;letter-spacing:2px;opacity:.85;transition:all .35s}
-.story{padding:40px 26px}
+.story{padding:40px 26px;padding-top:56px}
 .step{
   min-height:72vh;padding:20px;border:1px solid #2d3d5e;border-radius:14px;background:#111b2e;margin-bottom:20px;
 }
