@@ -36,15 +36,3 @@ window.addEventListener("scroll", () => {
     }, { once: false });
   } catch (_e) {}
 })();
-
-
-// === hint to start editing ===
-(function() {
-  setTimeout(function() {
-    var editor = document.querySelector('.editor') || document.querySelector('textarea');
-    if (editor && editor.tagName === 'TEXTAREA' && !editor.value.trim()) {
-      editor.value = '# 数据新闻：污染与健康\n\n## 第一章：问题浮现\n\n2023年冬季，某市PM2.5浓度连续30天超标...\n\n## 第二章：数据追踪\n\n通过对比环保局公开数据与卫星影像，我们发现...\n\n## 第三章：影响调查\n\n当地呼吸科门诊量同比增长47%...';
-      editor.dispatchEvent(new Event('input', {bubbles:true}));
-    }
-  }, 600);
-})();
