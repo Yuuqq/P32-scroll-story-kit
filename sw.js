@@ -8,24 +8,15 @@
  * 3. 网络优先 (Network-First) 获取 API 请求
  * 4. 离线回退页面
  */
-const CACHE_NAME = "journalism-tool-P32-v2";
+const CACHE_NAME = "journalism-tool-v1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./manifest.json",
   "./styles.css",
-  "./modern-styles.css",
   "./app.js",
   "./pm-metrics.js",
   "../shared/design-tokens.css",
-  "../shared/dark-toggle.js",
-  "../shared/cmd-palette.js",
-  "../shared/toast.js",
-  "../shared/onboarding.js",
-  "../shared/pedagogy-data-p1.js",
-  "../shared/pedagogy-data-p2.js",
-  "../shared/global-nav.js",
-  "../shared/kbd-hints.js"
+  "../shared/releases/v2.6/loader.js"
 ];
 
 // Install: Pre-cache core assets
@@ -48,7 +39,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+        keys.filter((k) => k.startsWith("journalism-tool-") && k !== CACHE_NAME).map((k) => caches.delete(k))
       )
     )
   );
@@ -74,7 +65,6 @@ self.addEventListener("fetch", (event) => {
           }
           return response;
         }).catch(() => {});
-        event.waitUntil(fetchPromise);
         return cached;
       }
       return fetch(event.request).then((response) => {
