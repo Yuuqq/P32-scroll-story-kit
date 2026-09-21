@@ -1,19 +1,20 @@
 *{box-sizing:border-box}
-body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#f8f9ff;background:#0f1728}
+body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#3A2E20;background:#F0E6CF}
 .layout{display:grid;grid-template-columns:1fr 420px;min-height:100vh}
 .graphic{
   position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 20% 20%,#25406d 0,#101a30 50%,#070b15 100%);
+  background:linear-gradient(160deg,#F7EFDA 0%,#EFE4C6 45%,#E8DCC0 100%);
+  border-right:1px solid #D3C4A0;
 }
-.bg-label{font-size:48px;font-weight:700;letter-spacing:2px;opacity:.85;transition:all .35s}
+.bg-label{font-size:48px;font-weight:700;letter-spacing:2px;opacity:.85;transition:all .35s;color:#3A2E20;font-family:"Kaiti SC","STKaiti","KaiTi",serif}
 .story{padding:40px 26px;padding-top:56px}
 .step{
-  min-height:72vh;padding:20px;border:1px solid #2d3d5e;border-radius: 6px;background:#111b2e;margin-bottom:20px;
+  min-height:72vh;padding:20px;border:1px solid #D3C4A0;border-radius: 6px;background:#F7EFDA;margin-bottom:20px;
 }
 .step h2{margin-top:0}
-.step.active{border-color:#70a8ff;box-shadow:0 0 0 1px #70a8ff}
-.progress-bar-container{position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(255,255,255,0.1);z-index:100}
-.progress-bar{height:100%;width:0%;background:#70a8ff;transition:width 0.1s}
+.step.active{border-color:#A2402F;box-shadow:0 0 0 1px #A2402F}
+.progress-bar-container{position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(211,196,160,0.55);z-index:100}
+.progress-bar{height:100%;width:0%;background:#A2402F;transition:width 0.1s}
 @media(max-width:980px){
   .layout{grid-template-columns:1fr}
   .graphic{position:relative;height:36vh}
@@ -104,7 +105,7 @@ details[open] summary { margin-bottom: 8px; }
 }
 .toast-msg {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-  background: #333; color: #fff; padding: 10px 20px; border-radius: 8px;
+  background: #333; color: #fff; padding: 10px 20px; border-radius: 6px;
   font-size: 0.9rem; z-index: 9999; opacity: 0;
   transition: opacity 0.3s ease;
 }
