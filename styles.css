@@ -8,7 +8,7 @@ body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#f8f9f
 .bg-label{font-size:48px;font-weight:700;letter-spacing:2px;opacity:.85;transition:all .35s}
 .story{padding:40px 26px;padding-top:56px}
 .step{
-  min-height:72vh;padding:20px;border:1px solid #2d3d5e;border-radius:14px;background:#111b2e;margin-bottom:20px;
+  min-height:72vh;padding:20px;border:1px solid #2d3d5e;border-radius: 6px;background:#111b2e;margin-bottom:20px;
 }
 .step h2{margin-top:0}
 .step.active{border-color:#70a8ff;box-shadow:0 0 0 1px #70a8ff}
