@@ -8,15 +8,17 @@
  * 3. 网络优先 (Network-First) 获取 API 请求
  * 4. 离线回退页面
  */
-const CACHE_NAME = "journalism-tool-v1";
+const CACHE_NAME = "journalism-tool-p32-hallmark-1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./pm-metrics.js",
+  "./favicon.svg",
   "../shared/design-tokens.css",
-  "../shared/dark-toggle.js"
+  "../shared/modern-styles.css",
+  "../shared/tool-chrome.css"
 ];
 
 // Install: Pre-cache core assets

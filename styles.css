@@ -1,22 +1,164 @@
-*{box-sizing:border-box}
-body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#f8f9ff;background:#0f1728}
-.layout{display:grid;grid-template-columns:1fr 420px;min-height:100vh}
-.graphic{
-  position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 20% 20%,#25406d 0,#101a30 50%,#070b15 100%);
+/* P32 layout only. Colour, type, and radius come from shared tokens. */
+
+body#p32 {
+  padding: 0 0 6rem !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
 }
-.bg-label{font-size:48px;font-weight:700;letter-spacing:2px;opacity:.85;transition:all .35s}
-.story{padding:40px 26px}
-.step{
-  min-height:72vh;padding:20px;border:1px solid #2d3d5e;border-radius:14px;background:#111b2e;margin-bottom:20px;
+
+body#p32 main#main {
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.step h2{margin-top:0}
-.step.active{border-color:#70a8ff;box-shadow:0 0 0 1px #70a8ff}
-.progress-bar-container{position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(255,255,255,0.1);z-index:100}
-.progress-bar{height:100%;width:0%;background:#70a8ff;transition:width 0.1s}
-@media(max-width:980px){
-  .layout{grid-template-columns:1fr}
-  .graphic{position:relative;height:36vh}
+
+.tool-chrome,
+.tool-teach,
+.tool-footer,
+.pedagogy-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.tool-chrome,
+.tool-footer {
+  padding-inline: clamp(16px, 4vw, 40px);
+}
+
+.tool-teach {
+  margin-inline: clamp(16px, 4vw, 40px);
+}
+
+a.tool-chrome__mark {
+  color: var(--ink) !important;
+  text-decoration: none !important;
+}
+
+/* v2.6 dark toggle paints a sun/moon emoji inline. Keep the button; show a word. */
+body#p32 #darkToggleBtn {
+  font-size: 0 !important;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+
+body#p32 #darkToggleBtn::before {
+  content: "暗";
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+}
+
+html[data-theme="dark"] body#p32 #darkToggleBtn::before {
+  content: "亮";
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  min-height: 100vh;
+}
+
+.graphic {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  overflow: hidden;
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--cinnabar) 12%, var(--card)) 0%,
+      var(--bg) 72%
+    );
+  border-right: var(--rule-hair) solid var(--line);
+}
+
+.bg-label {
+  margin: 0;
+  max-width: 9em;
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--cinnabar);
+  font-family: var(--kai, var(--font-serif));
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--ink);
+}
+
+.story {
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+}
+
+.step {
+  min-height: 72vh;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg);
+  border: var(--rule-hair) solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+.step h2 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--kai, var(--font-serif));
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0 !important;
+}
+
+.step p {
+  margin: 0 0 var(--space-sm);
+}
+
+.step p:last-child {
+  margin-bottom: 0;
+}
+
+.step.active {
+  border-color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .graphic {
+    position: relative;
+    height: auto;
+    min-height: 36vh;
+    border-right: 0;
+    border-bottom: var(--rule-hair) solid var(--line);
+  }
+
+  .story {
+    padding: var(--space-lg) var(--space-md);
+  }
 }
 
 .sr-only {
@@ -31,208 +173,140 @@ body{margin:0;font-family:"Source Sans 3","Noto Sans SC",sans-serif;color:#f8f9f
   white-space: nowrap;
 }
 
-
-/* === CSS Professor Animation Upgrade (Round 22) === */
-
-/* Page entrance */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.app, main, body > .container { animation: fadeInUp 0.4s ease-out; }
-
-/* Staggered card entrance */
-@keyframes cardReveal {
-  from { opacity: 0; transform: translateY(12px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-.card, [class*="card"], .mission-card, .module-card, .stat-card {
-  animation: cardReveal 0.35s ease-out both;
-}
-.card:nth-child(2), [class*="card"]:nth-child(2) { animation-delay: 0.05s; }
-.card:nth-child(3), [class*="card"]:nth-child(3) { animation-delay: 0.1s; }
-.card:nth-child(4), [class*="card"]:nth-child(4) { animation-delay: 0.15s; }
-.card:nth-child(5), [class*="card"]:nth-child(5) { animation-delay: 0.2s; }
-
-/* Subtle pulse for primary buttons */
-@keyframes btnPulse {
-  0%, 100% { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-  50% { box-shadow: 0 2px 12px rgba(199,73,31,0.25); }
-}
-button[id*="Btn"]:not(:disabled), .btn-primary {
-  animation: btnPulse 3s ease-in-out infinite;
-}
-button:disabled { animation: none; opacity: 0.6; }
-
-/* Smooth height transitions for collapsible sections */
-details { transition: all 0.2s ease; }
-details[open] summary { margin-bottom: 8px; }
-
-/* Tooltip fade */
-[title] { position: relative; }
-
-/* Progress bar animation */
-@keyframes progressFill {
-  from { width: 0; }
-}
-.mc-bar-fill, .mod-progress-fill, .bar-fill, progress::-webkit-progress-value {
-  animation: progressFill 0.6s ease-out;
+/* Injected textbook panel: keep it closed-by-default, token colours, radius ≤6px.
+   Selector weight beats modern-styles button rules. */
+body#p32 #main .pedagogy-panel {
+  margin: 0 clamp(16px, 4vw, 40px) var(--space-lg) !important;
+  max-width: none !important;
+  border: var(--rule-hair) solid var(--line) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--card) !important;
+  box-shadow: none !important;
 }
 
-/* Reduced motion preference */
+body#p32 #main .pedagogy-panel > button.pedagogy-toggle {
+  background: var(--card) !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  min-height: 44px;
+  font-family: var(--font-sans) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  transform: none !important;
+}
+
+body#p32 #main .pedagogy-panel > button.pedagogy-toggle:hover {
+  background: var(--accent-light) !important;
+  color: var(--ink) !important;
+  transform: none !important;
+}
+
+/* v2.6 pedagogy toggle ships a leading emoji. Keep the control; show plain text. */
+body#p32 #main .pedagogy-panel > button.pedagogy-toggle > span:not(.arrow) {
+  font-size: 0 !important;
+}
+
+body#p32 #main .pedagogy-panel > button.pedagogy-toggle > span:not(.arrow)::after {
+  content: "教材学习指引";
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+body#p32 .flow-guide,
+body#p32 .onboarding-tip {
+  border-radius: var(--radius-md) !important;
+  background: var(--card) !important;
+  color: var(--ink) !important;
+}
+
+body#p32 .flow-guide-btn,
+body#p32 .onboarding-tip-actions button {
+  border-radius: var(--radius-md) !important;
+}
+
+body#p32 .flow-guide-btn.primary,
+body#p32 .onboarding-tip-actions .primary {
+  background: var(--accent) !important;
+  color: var(--accent-ink) !important;
+  border-color: var(--accent) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* === Loading & Feedback States === */
-@keyframes spin { to { transform: rotate(360deg); } }
-.btn-loading { position: relative; pointer-events: none; opacity: 0.7; }
-.btn-loading::after {
-  content: '';
-  position: absolute;
-  right: 8px; top: 50%;
-  width: 14px; height: 14px;
-  margin-top: -7px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-}
-.toast-msg {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-  background: #333; color: #fff; padding: 10px 20px; border-radius: 8px;
-  font-size: 0.9rem; z-index: 9999; opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.toast-msg.show { opacity: 1; }
-
-
-/* === Onboarding Pulse Dot === */
-@keyframes onboardPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-}
-.onboard-dot {
-  display: inline-block;
-  width: 8px; height: 8px;
-  background: var(--accent, #c7491f);
-  border-radius: 50%;
-  animation: onboardPulse 1.5s ease-in-out infinite;
-  margin-right: 4px;
-  vertical-align: middle;
-}
-
-/* ---- Print-friendly polish (v2.3 batch) ---- */
 @media print {
-  body { background: white !important; color: black !important; }
-  .global-nav, [data-nav], .skip-link, button:not(.print-keep), .btn:not(.print-keep) { display: none !important; }
-  a { color: inherit; text-decoration: underline; }
-  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; word-break: break-all; }
-  .card, .panel, .hero { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
-  h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
-}
-
-/* =====================================================================
- * v2.4.1 deep polish — ui-ux-pro-max + frontend-design (architect-approved)
- * Uses each tool's existing --accent / --line / --card / --ink tokens.
- * Applied to P00/P32/P37 to complete 51/51 coverage.
- * ===================================================================== */
-
-/* P3 Hierarchy — Hero h1 brand gradient with 3-tier fallback */
-.hero h1 {
-  color: var(--accent, var(--focus, #2563eb));
-  background: linear-gradient(135deg,
-    var(--accent, var(--focus, #2563eb)) 0%, #1e3a8a 100%);
-  background: linear-gradient(135deg,
-    var(--accent, var(--focus, #2563eb)) 0%,
-    color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 65%, var(--ink, #0f172a)) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-@supports not (background-clip: text) {
-  .hero h1 {
-    color: var(--accent, var(--focus, #2563eb));
-    -webkit-text-fill-color: currentColor;
-    background: none;
+  .progress-bar-container,
+  .skip-link,
+  .pedagogy-panel,
+  .flow-guide,
+  .gnav-fab,
+  #darkToggleBtn,
+  .shared-created-by,
+  .onboarding-ring,
+  .onboarding-tip {
+    display: none !important;
   }
-}
 
-.hero .lead { max-width: 64ch; }
-.hero .subtle { max-width: 72ch; opacity: 0.85; }
-
-.btn-primary, [data-primary],
-button#scanBtn, button#submitBtn, button#generateBtn, button#checkBtn,
-button#extractBtn, button#startBtn, button#runBtn, button#analyzeBtn,
-button[type="submit"]:not(.ghost):not(.btn-secondary) {
-  background: linear-gradient(180deg, var(--accent, var(--focus, #2563eb)), #1e40af);
-  background: linear-gradient(180deg, var(--accent, var(--focus, #2563eb)),
-    color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 78%, #000));
-  color: #fff;
-  border: 1px solid #1e40af;
-  border: 1px solid color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 70%, #000);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 6px 14px -6px rgba(37,99,235,0.5);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 6px 14px -6px color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 50%, transparent);
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .card:not(.hero):not(:has(textarea)):not(:has(form)) {
-    transition: transform 0.18s ease, box-shadow 0.22s ease;
+  body#p32 {
+    padding: 0 !important;
+    background: var(--print-paper) !important;
+    color: var(--print-ink) !important;
+    font-size: 11pt;
   }
-  .card:not(.hero):not(:has(textarea)):not(:has(form)):hover { transform: translateY(-1px); }
-}
 
-textarea {
-  border-radius: 10px;
-  transition: border-color 0.15s ease, box-shadow 0.18s ease;
-}
-textarea:focus, textarea:focus-visible {
-  border-color: var(--accent, var(--focus, #2563eb));
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.18);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 18%, transparent);
-}
-
-[aria-live="polite"], [aria-live="assertive"], #status {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.85em;
-  background: rgba(37,99,235,0.08);
-  background: color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 8%, transparent);
-  border: 1px solid rgba(37,99,235,0.18);
-  border: 1px solid color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 18%, transparent);
-  font-variant-numeric: tabular-nums;
-}
-
-details.teach-card summary {
-  cursor: pointer;
-  border-radius: 8px;
-  padding: 4px 6px;
-  margin: -4px -6px;
-  transition: background 0.15s ease;
-}
-details.teach-card summary:hover {
-  background: rgba(37,99,235,0.08);
-  background: color-mix(in srgb, var(--accent, var(--focus, #2563eb)) 8%, transparent);
-}
-details.teach-card[open] summary { margin-bottom: 4px; }
-
-@media (max-width: 640px) {
-  .hero {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    background: var(--card, #fff);
-    background: color-mix(in srgb, var(--card, #fff) 88%, transparent);
+  .layout {
+    display: block;
+    min-height: 0;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
   }
-  @supports not (backdrop-filter: blur(8px)) {
-    .hero { background: var(--card, #fff); }
+
+  .graphic {
+    position: static;
+    height: auto;
+    min-height: 0;
+    background: var(--print-paper);
+    border: none;
+  }
+
+  .step {
+    min-height: 0;
+    break-inside: avoid;
+    background: var(--print-paper);
+    box-shadow: none !important;
+    border-color: color-mix(in srgb, var(--print-ink) 22%, var(--print-paper));
+  }
+
+  a {
+    color: var(--print-ink) !important;
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: color-mix(in srgb, var(--print-ink) 72%, var(--print-paper));
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  @page {
+    margin: 2cm;
   }
 }
