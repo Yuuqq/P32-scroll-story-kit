@@ -2,62 +2,57 @@
 <html lang="zh-CN" class="type-scale-v22">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f1728">
-  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F0E6CF" />
+  <meta name="color-scheme" content="light dark" />
   <title>P32 Scrollytelling 脚手架</title>
-    <link rel="stylesheet" href="../shared/design-tokens.css" />
-<link rel="stylesheet" href="./styles.css" />
-  <meta name="description" content="P32 Scrollytelling 脚手架。P32 Scrollytelling 脚手架" />
+  <link rel="stylesheet" href="../shared/design-tokens.css" />
+  <link rel="stylesheet" href="../shared/modern-styles.css" />
+  <link rel="stylesheet" href="../shared/tool-chrome.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="P32 Scrollytelling 脚手架。向下滚动，画面标题随叙事步骤切换。" />
   <meta property="og:title" content="P32 Scrollytelling 脚手架" />
   <meta property="og:description" content="Scrollytelling 脚手架 — 前端纯静态新闻工具" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://yuuqq.github.io/P32-scroll-story-kit/" />
   <link rel="manifest" href="./manifest.json" />
-<style media="print">
-.gnav,.pedagogy-panel,.explore-section,[class*="dark-toggle"],button[aria-label]{display:none!important}
-body{background:#fff!important;color:#000!important;font-size:11pt}
-.app,main,.container{box-shadow:none!important;border:none!important;padding:0!important}
-a{color:#000!important;text-decoration:underline}
-a[href]::after{content:" (" attr(href) ")";font-size:9pt;color:#666}
-@page{margin:2cm}
-</style>
 </head>
-<body>
+<body id="p32">
   <a href="#main" class="skip-link">跳到主内容 / Skip to main content</a>
-  <main id="main" aria-label="主内容区域" class="layout">
+  <header class="tool-chrome" data-tool-id="P32">
+    <a class="tool-chrome__mark" href="../P00-dashboard/">新闻实验工具</a>
+    <span class="tool-chrome__id">P32</span>
+  </header>
+  <details class="tool-teach">
+    <summary>如何使用</summary>
+    <p>向下滚动步骤。宽屏时左侧、窄屏时上方的画面标题随当前段落切换，页顶细线是阅读进度。示例文案可换成自己的叙事，并保留每步的 <code>data-scene</code>。</p>
+  </details>
+  <main id="main" aria-label="主内容区域">
     <h1 class="sr-only">P32 Scrollytelling 脚手架</h1>
     <div class="progress-bar-container">
       <div id="progressBar" class="progress-bar"></div>
     </div>
-    <section class="graphic" id="graphic">
-      <div id="bgLabel" class="bg-label">引言：升温危机</div>
-    </section>
-    <section class="story">
-      <article class="step" data-scene="引言：升温危机"><h2>引言：升温的警钟</h2><p>过去一百年，全球平均气温上升了约 1.2℃。看似微不足道的数字改变，正在重塑整个地球的生态系统。</p><p>向上滚动页面，看看这些变化如何影响我们的世界。</p></article>
-      <article class="step" data-scene="冰川消融：消失的帷幕"><h2>冰川消融</h2><p>在北极，海冰面积正以每十年 13% 的速度急剧锐减。这是地球空调失去制冷功能的直观体现。失去冰层反射阳光，海水将吸收更多热量，进一步加速变暖。</p></article>
-      <article class="step" data-scene="极端天气：新常态代价"><h2>极端天气频发</h2><p>从肆虐的热浪到破坏性的洪水，极端天气不再是百年一遇的偶然。数据表明，伴随着气温上升，致命高温天气的发生频率已经翻了三倍。</p></article>
-      <article class="step" data-scene="海平面上升：淹没的家园"><h2>海平面的无声逼近</h2><p>随着格陵兰岛和南极冰盖的加速融化，全球海平面预计到本世纪末将上升高至一米。对于沿海城市和岛国而言，这是一场缓慢却无法阻挡的生存危机。</p></article>
-      <article class="step" data-scene="关键转折点：行动契机"><h2>转折点：行动的契机</h2><p>减碳已成为全球共识。各国正在向可再生能源转型，推广电动交通工具。但时间紧迫，我们的每一个决定都在书写地球的未来。</p></article>
-    </section>
+    <div class="layout">
+      <section class="graphic" id="graphic">
+        <div id="bgLabel" class="bg-label">引言：升温危机</div>
+      </section>
+      <section class="story">
+        <article class="step" data-scene="引言：升温危机"><h2>引言：升温的警钟</h2><p>过去一百年，全球平均气温上升了约 1.2℃。看似微不足道的数字改变，正在重塑整个地球的生态系统。</p><p>向上滚动页面，看看这些变化如何影响我们的世界。</p></article>
+        <article class="step" data-scene="冰川消融：消失的帷幕"><h2>冰川消融</h2><p>在北极，海冰面积正以每十年 13% 的速度急剧锐减。这是地球空调失去制冷功能的直观体现。失去冰层反射阳光，海水将吸收更多热量，进一步加速变暖。</p></article>
+        <article class="step" data-scene="极端天气：新常态代价"><h2>极端天气频发</h2><p>从肆虐的热浪到破坏性的洪水，极端天气不再是百年一遇的偶然。数据表明，伴随着气温上升，致命高温天气的发生频率已经翻了三倍。</p></article>
+        <article class="step" data-scene="海平面上升：淹没的家园"><h2>海平面的无声逼近</h2><p>随着格陵兰岛和南极冰盖的加速融化，全球海平面预计到本世纪末将上升高至一米。对于沿海城市和岛国而言，这是一场缓慢却无法阻挡的生存危机。</p></article>
+        <article class="step" data-scene="关键转折点：行动契机"><h2>转折点：行动的契机</h2><p>减碳已成为全球共识。各国正在向可再生能源转型，推广电动交通工具。但时间紧迫，我们的每一个决定都在书写地球的未来。</p></article>
+      </section>
+    </div>
   </main>
-    <script src="./pm-metrics.js" defer></script>
-<script src="./app.js" defer></script>
-
-  <!-- Privacy Notice -->
-  <div style="text-align:center;padding:12px 16px;font-size:12px;color:#888;border-top:1px solid #eee;margin-top:24px;">
-    🔒 隐私提示：本工具所有数据处理均在您的浏览器本地完成，不会上传任何数据至服务器。
-  </div>
-
-  <!-- Cross-Project Navigation -->
-  <nav aria-label="工具箱导航" style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:13px;border-top:1px solid #e5e5e5;margin-top:16px;color:#666;">
-    <a href="https://yuuqq.github.io/journalism-toolbox/" style="text-decoration:none;">📋 工具箱导航</a>
-    <span style="opacity:.4">P32</span>
-  </nav>
+  <footer class="tool-footer">
+    数据边界以附录 A 为准：能在本机完成的计算不主动外发；示例数据仅供课堂；本工具输出不得单独当作结论。
+    <a href="../P00-dashboard/">返回工具箱</a>
+  </footer>
+  <script src="./pm-metrics.js" defer></script>
+  <script src="./app.js" defer></script>
   <script src="../shared/releases/v2.6/loader.js" data-modules="dark,cmd,toast,onboarding,pedagogy-p1,pedagogy-p2,nav,kbd"></script>
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}</script>
-
 </body>
 </html>
-
